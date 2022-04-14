@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 
 namespace simple_dotnet_app.Controllers
 {
@@ -10,6 +11,13 @@ namespace simple_dotnet_app.Controllers
 
         private static int livenessHitCount = 0;
         private static int HitCount = 0;
+
+        [HttpGet]
+        public IActionResult Get()
+        {
+            return Ok(Dns.GetHostName());
+        }
+
         [HttpGet("health")]
         public IActionResult Health()
         {
