@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
+using System.Net.Sockets;
 
 namespace simple_dotnet_app.Controllers
 {
@@ -15,7 +16,19 @@ namespace simple_dotnet_app.Controllers
         [HttpGet]
         public IActionResult Get()
         {
+            //return Ok(.Select(x=>x.Address.ToString()).ToList());
             return Ok(Dns.GetHostName());
+
+        }
+
+        [HttpGet("get-ip")]
+        public IActionResult GetIP()
+        {
+            var address = Dns.GetHostAddresses(
+                Dns.GetHostName())
+                .FirstOrDefault(ha => ha.AddressFamily == AddressFamily.InterNetwork)?
+                .ToString();
+            return Ok(address);
         }
 
         [HttpGet("health")]
