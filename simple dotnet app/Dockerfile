@@ -15,12 +15,17 @@ FROM build AS publish
 RUN dotnet publish "simple dotnet app.csproj" -c Release -o /app/publish
 
 FROM base AS final
+RUN apt update
+RUN apt install curl grep -y
 WORKDIR /app
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "simple dotnet app.dll"]
 
 # Build using 
-# docker build -t i_simple_dotnet .
+# docker build -t minhaz1217/simple-dotnet .
 
 # Run using
 # docker run --name simple_dotnet -p3001:80 -p3002:443 -dit i_simple_dotnet
+
+# Push using
+# docker push
