@@ -17,7 +17,7 @@ namespace simple_dotnet_app.Controllers
         public IActionResult Get()
         {
             //return Ok(.Select(x=>x.Address.ToString()).ToList());
-            return Ok(Dns.GetHostName());
+            return Ok(Dns.GetHostName() + "\n");
 
         }
 
