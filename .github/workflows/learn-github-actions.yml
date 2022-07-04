@@ -4,13 +4,10 @@ jobs:
   check-bats-version:
     runs-on: ubuntu-latest
     steps:
-     - uses: actions/checkout@v3
-       with:
-        path: master
-     - run: sudo apt-get update
-     - run: sudo apt-get install -y apt-transport-https
-     - run: sudo apt-get update
-     - run: sudo apt-get install -y dotnet-sdk-6.0
-     - run: |
-            cd "$GITHUB_WORKSPACE/master/simple dotnet app"
-            dotnet build
+      - uses: actions/checkout@v3
+        with:
+          path: master
+      - run: |
+          cd "$GITHUB_WORKSPACE/master/simple dotnet app"
+          docker build -t minhaz1217/basic-dotnet .
+          
