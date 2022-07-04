@@ -10,5 +10,5 @@ jobs:
           path: master
       - run: |
           cd "$GITHUB_WORKSPACE/master/simple dotnet app"
-          docker build -t minhaz1217/basic-dotnet .
-          docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
+          echo $DOCKERHUB_PASSWORD>docker_hub_pass
+          docker login -u $DOCKERHUB_USERNAME --password-stdin < docker_hub_pass
