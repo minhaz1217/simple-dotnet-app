@@ -3,6 +3,7 @@ on: [push]
 jobs:
   check-bats-version:
     runs-on: ubuntu-latest
+    environment: dev
     steps:
       - uses: actions/checkout@v3
         with:
@@ -10,4 +11,4 @@ jobs:
       - run: |
           cd "$GITHUB_WORKSPACE/master/simple dotnet app"
           docker build -t minhaz1217/basic-dotnet .
-          
+          docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
