@@ -5,7 +5,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
      - run: sudo apt-get update
-     - run : sudo apt-get install -y apt-transport-https
+     - run: sudo apt-get install -y apt-transport-https
      - run: sudo apt-get update
      - run: sudo apt-get install -y dotnet-sdk-6.0
-      
+     - run: ls
+     - run: dotnet build
