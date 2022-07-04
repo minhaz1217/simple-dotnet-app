@@ -10,5 +10,4 @@ jobs:
           path: master
       - run: |
           cd "$GITHUB_WORKSPACE/master/simple dotnet app"
-          echo $DOCKERHUB_PASSWORD>docker_hub_pass
-          docker login -u $DOCKERHUB_USERNAME --password-stdin < docker_hub_pass
+          echo ${{ DOCKERHUB_PASSWORD }} | docker login --username ${{ DOCKERHUB_USERNAME }} --password-stdin
