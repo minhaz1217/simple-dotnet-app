@@ -1,4 +1,4 @@
-name: learn-github-actions
+name: building-and-deploying-docker-image
 on: [push]
 jobs:
   check-bats-version:
@@ -15,7 +15,9 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
-      - run: |  
+      - 
+        name: Building and pushing image
+        run: |  
               cd "$GITHUB_WORKSPACE/master/simple dotnet app"
               docker build -t minhaz1217/basic-dotnet .
               docker push minhaz1217/basic-dotnet
