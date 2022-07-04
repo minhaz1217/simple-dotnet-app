@@ -13,4 +13,5 @@ jobs:
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
       - run: |
           cd "$GITHUB_WORKSPACE/master/simple dotnet app"
-          echo $DOCKERHUB_PASSWORD | docker login --username $DOCKERHUB_USERNAME --password-stdin
+          echo $DOCKERHUB_USERNAME
+          echo ${{ secrets.DOCKERHUB_USERNAME }}
