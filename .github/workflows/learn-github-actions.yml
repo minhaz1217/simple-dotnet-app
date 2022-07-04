@@ -4,10 +4,16 @@ jobs:
   check-bats-version:
     runs-on: ubuntu-latest
     environment: dev
-    steps:
+    steps:   
+      -
+        name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_TOKEN
       - uses: actions/checkout@v3
         with:
           path: master
       - run: |
           cd "$GITHUB_WORKSPACE/master/simple dotnet app"
-          echo $DOCKERHUB_PASSWORD | docker login --username $DOCKERHUB_USERNAME --password-stdin
+          docker build -t minhaz1217/basic-dotnet .
