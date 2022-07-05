@@ -1,7 +1,7 @@
 name: building-and-deploying-docker-image
 on: [push]
 jobs:
-  check-bats-version:
+  building-the-image:
     runs-on: ubuntu-latest
     environment: dev
     steps:
